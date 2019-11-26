@@ -1,8 +1,8 @@
 import { call, put, takeEvery, all } from 'redux-saga/effects';
 
-import { getProductList } from '../api-client/products';
-import * as types from '../action-types/products';
-import * as actions from '../actions/products';
+import { getProductList } from '../../api-client/products';
+import * as types from '../reducers/products';
+import * as actions from '../reducers/products';
 
 export function* watchGetProducts() {
   yield takeEvery(types.GET_PRODUCTS_INIT, getProducts);

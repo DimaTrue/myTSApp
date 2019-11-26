@@ -8,8 +8,8 @@ import {
 } from 'react-native';
 import { connect } from 'react-redux';
 
-import * as productSelectors from '../selectors/products';
-import { getProductsList } from '../actions/products';
+import * as productSelectors from '../store/selectors/products';
+import { getProductsList } from '../store/reducers/products';
 import ProductItem from '../components/ProductItem';
 
 class ProductList extends Component {
@@ -28,7 +28,6 @@ class ProductList extends Component {
 
   render() {
     const { isLoading, products, error } = this.props;
-    console.warn(products.length);
     return (
       <View style={styles.container}>
         <Text> textInComponent </Text>
@@ -40,8 +39,8 @@ class ProductList extends Component {
         ) : (
           <>
             <FlatList
-              contentContainerStyle={styles.wrapper}
-              columnWrapperStyle={styles.columnWrapperStyle}
+              // contentContainerStyle={styles.wrapper}
+              // columnWrapperStyle={styles.columnWrapperStyle}
               initialNumToRender={16}
               horizontal={false}
               numColumns={2}
@@ -81,5 +80,8 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  wrapperLoading: {
+    flex: 1,
   },
 });
