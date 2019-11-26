@@ -5,19 +5,18 @@ import { noProductImage } from '../img';
 
 const { width, height } = Dimensions.get('window');
 
-export default class ProductItem extends Component {
-  render() {
-    const { theme, text, price, images } = this.props;
-    return (
-      <View style={styles.container}>
-        <Image style={styles.img} source={noProductImage} />
-        <Text style={styles.theme}>{theme}</Text>
-        <Text style={styles.text}>{text}</Text>
-        <Text style={styles.text}>{price}</Text>
-      </View>
-    );
-  }
-}
+const ProductItem = ({ theme, text, price, images }) => {
+  return (
+    <View style={styles.container}>
+      <Image style={styles.img} source={noProductImage} />
+      <Text style={styles.theme}>{theme}</Text>
+      <Text style={styles.text}>{text}</Text>
+      <Text style={styles.text}>{price}</Text>
+    </View>
+  );
+};
+
+export default ProductItem;
 
 const styles = StyleSheet.create({
   container: {

@@ -30,8 +30,7 @@ class ProductList extends Component {
     const { isLoading, products, error } = this.props;
     return (
       <View style={styles.container}>
-        <Text> textInComponent </Text>
-
+        <Text>Products</Text>
         {isLoading ? (
           <View style={styles.wrapperLoading}>
             <ActivityIndicator />
@@ -39,24 +38,12 @@ class ProductList extends Component {
         ) : (
           <>
             <FlatList
-              // contentContainerStyle={styles.wrapper}
-              // columnWrapperStyle={styles.columnWrapperStyle}
-              initialNumToRender={16}
+              initialNumToRender={10}
               horizontal={false}
               numColumns={2}
               data={products}
               renderItem={this.renderItem}
               keyExtractor={this.keyExtractor}
-              // bounces={false}
-              // onEndReached={this._handleLoadMore}
-              // onEndReachedThreshold={0.01}
-              // ListFooterComponent={
-              //   <Banner
-              //     isLoadingMore={isLoadingMore}
-              //     isLastPage={endOfList}
-              //     screenProps={screenProps}
-              //   />
-              // }
             />
           </>
         )}
