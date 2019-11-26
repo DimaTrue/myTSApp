@@ -1,8 +1,28 @@
 export enum ProductsActionTypes {
-  GET_PRODUCTS = 'GET_PRODUCTS',
+  GET_PRODUCTS_INIT = 'GET_PRODUCTS_INIT',
   GET_PRODUCTS_SUCCESS = 'GET_PRODUCTS_SUCCESS',
   GET_PRODUCTS_FAILURE = 'GET_PRODUCTS_FAILURE',
 }
+
+export interface IgetProductsListAction {
+  type: ProductsActionTypes.GET_PRODUCTS_INIT;
+  payload: number;
+}
+
+export interface IgetProductsListSuccessAction {
+  type: ProductsActionTypes.GET_PRODUCTS_SUCCESS;
+  payload: Array<IProduct>;
+}
+
+export interface IgetProductsListFailureAction {
+  type: ProductsActionTypes.GET_PRODUCTS_FAILURE;
+  payload: string;
+}
+
+export type ProductsActions =
+  | IgetProductsListAction
+  | IgetProductsListSuccessAction
+  | IgetProductsListFailureAction;
 
 export interface IImages {
   readonly advert?: number;
@@ -31,7 +51,7 @@ export interface IProduct {
   readonly is_active?: boolean;
   readonly location?: number;
   readonly owner?: IOwner;
-  readonly pk?: number;
+  readonly pk: number;
   readonly price?: number;
   readonly text?: string;
   readonly theme?: string;
@@ -40,5 +60,5 @@ export interface IProduct {
 export interface IProductsState {
   readonly isLoading: boolean;
   readonly productList: IProduct[];
-  readonly error: any;
+  readonly error: string;
 }

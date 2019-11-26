@@ -1,14 +1,17 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Text, StyleSheet, View, Dimensions, Image } from 'react-native';
 
 import { noProductImage } from '../img';
+import { IProduct } from 'src/store/types';
 
-const { width, height } = Dimensions.get('window');
+const { width } = Dimensions.get('window');
 
-const ProductItem = ({ theme, text, price, images }) => {
+const ProductItem: React.FC<IProduct> = ({ theme, text, price, images }) => {
+  const pic =
+    images && images.length ? { uri: images[0].file } : noProductImage;
   return (
     <View style={styles.container}>
-      <Image style={styles.img} source={noProductImage} />
+      <Image style={styles.img} source={pic} />
       <Text style={styles.theme}>{theme}</Text>
       <Text style={styles.text}>{text}</Text>
       <Text style={styles.text}>{price}</Text>
